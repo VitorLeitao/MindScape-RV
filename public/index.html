@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Som 3D</title>
+</head>
+<body>
+  <h2>Escolha um som para tocar</h2>
+
+  <select id="soundSelect">
+    <option value="">--Selecione--</option>
+    <option value="getPraia">Praia</option>
+    <option value="getChuva">Chuva</option>
+    <option value="getChuvaPraia">Praia + Chuva</option>
+  </select>
+
+  <button onclick="playSelected()">Tocar</button>
+  <button onclick="stopAll()">Parar</button>
+
+  <script src="https://unpkg.com/resonance-audio/build/resonance-audio.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
