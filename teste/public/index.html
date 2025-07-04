@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindScape</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <div id="header" class="header">
+            <h1 class="title">MindScape</h1>
+            <div class="title-divider"></div>
+        </div>
+
+    <!-- Soundscape Grid -->
+    <div id="soundscape-grid" class="soundscape-grid">
+        <div class="grid-container">
+            <button class="soundscape-button" data-id="relaxamentoPraiaChuva" data-gradient="slate" data-color="slate">
+            <div class="gradient-bg gradient-slate"></div>
+            <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.2"/>
+                <path d="m16 14-3 5-3-5"/>
+                <path d="m8 14-3 5-3-5"/>
+            </svg>
+            </div>
+            <div class="active-indicator"></div>
+            <div class="border-overlay"></div>
+        </button>
+
+        <!-- Cabana na Montanha -->
+        <button class="soundscape-button" data-id="cabanaMontanha" data-gradient="green" data-color="green">
+            <div class="gradient-bg gradient-green"></div>
+            <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2c1 3 2.5 3.5 3.5 4.5A5 5 0 0 1 12 17H9"/>
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4.5-2 1-3 .9.7 3 2.2 3 5a3 3 0 1 1-6 0c0-.7.1-1.3.5-2z"/>
+            </svg>
+            </div>
+            <div class="active-indicator"></div>
+            <div class="border-overlay"></div>
+        </button>
+
+        <!-- Meditação Profunda -->
+        <button class="soundscape-button" data-id="meditacaoProfunda" data-gradient="purple" data-color="indigo">
+            <div class="gradient-bg gradient-purple"></div>
+            <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M8 16c-3.3 0-6 2-6 4h20c0-2-2.7-4-6-4"/>
+            </svg>
+            </div>
+            <div class="active-indicator"></div>
+            <div class="border-overlay"></div>
+        </button>
+
+        <!-- Floresta ao Amanhecer -->
+        <button class="soundscape-button" data-id="florestaAmanhecer" data-gradient="blue" data-color="blue">
+            <div class="gradient-bg gradient-blue"></div>
+            <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10 10v.2A3 3 0 0 0 8.9 16H5a3.5 3.5 0 0 1 0-6.5V10a3 3 0 0 0 3-3 2 2 0 0 1 2-2z"/>
+                <path d="M7 16v6M13 19v3M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3 11.6 4.5"/>
+            </svg>
+            </div>
+            <div class="active-indicator"></div>
+            <div class="border-overlay"></div>
+        </button>
+
+        <!-- Ambiente Terapêutico -->
+        <button class="soundscape-button" data-id="ambienteTerapeutico" data-gradient="fire" data-color="orange">
+            <div class="gradient-bg gradient-fire"></div>
+            <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 3c1 2 1 3 0 4-1 1-2 2-2 4a4 4 0 1 0 8 0c0-2-1.5-4-4-6z"/>
+                <path d="M8 14c-.5.8-.7 1.5-.7 2.2a4 4 0 0 0 8 0c0-.7-.2-1.4-.6-2"/>
+            </svg>
+            </div>
+            <div class="active-indicator"></div>
+            <div class="border-overlay"></div>
+        </button>
+
+        <!-- Refúgio Noturno -->
+        <button class="soundscape-button" data-id="refugioNoturno" data-gradient="gray" data-color="gray">
+            <div class="gradient-bg gradient-gray"></div>
+            <div class="icon-container">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 3l4 8 5-5 5 15H2L8 3z"/>
+            </svg>
+            </div>
+            <div class="active-indicator"></div>
+            <div class="border-overlay"></div>
+        </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Playing State Overlay -->
+        <div id="playing-overlay" class="playing-overlay">
+            <div class="playing-content">
+                <div class="pulse-dot"></div>
+                <button id="stop-button" class="stop-button">
+                    Toque para retornar
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Spacing -->
+        <div class="bottom-spacing"></div>
+    </div>
+
+    <script src="https://unpkg.com/resonance-audio/build/resonance-audio.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
