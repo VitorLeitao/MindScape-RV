@@ -7,23 +7,25 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/sounds', express.static(path.join(__dirname, 'sounds')));
 
-// Rota principal
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+app.get('/getSoundscape/:id', (req, res) => {
+  const id = req.params.id;
+
+  const soundscapes = {
+  relaxamentoPraiaChuva: ['/sounds/chuva.mp3', '/sounds/praia.mp3', '/sounds/passaro.mp3'],
+  cabanaMontanha: ['/sounds/vento.mp3', '/sounds/fogueira.mp3'],
+  meditacaoProfunda: ['/sounds/bineural_4hz.mp3', '/sounds/musica_calma_2.mp3', '/sounds/vento.mp3'],
+  florestaAmanhecer: ['/sounds/passaro.mp3', '/sounds/vento.mp3'], // Adicionar som de arvore
+  ambienteTerapeutico: ['/sounds/musica_calma_1.mp3', '/sounds/bineural_6hz.mp3', '/sounds/chuva.mp3'], // Diminuit musica
+  refugioNoturno: ['/sounds/fogueira.mp3', '/sounds/vento.mp3', '/sounds/musica_calma_2.mp3'],// Diminuit musica
+};
+
+  if (soundscapes[id]) {
+    res.json(soundscapes[id]);
+  } else {
+    res.status(404).json({ error: 'Soundscape não encontrado' });
+  }
 });
 
-// Endpoints de sons
-app.get('/getPraia', (req, res) => {
-  res.json(['/sounds/praia.mp3']);
-});
-
-app.get('/getChuva', (req, res) => {
-  res.json(['/sounds/chuva.mp3']);
-});
-
-app.get('/getChuvaPraia', (req, res) => {
-  res.json(['/sounds/chuva.mp3', '/sounds/praia.mp3']);
-});
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
