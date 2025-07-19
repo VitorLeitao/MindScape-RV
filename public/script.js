@@ -130,3 +130,104 @@ document.addEventListener("keydown", (e) => {
     window.mindscape.handleStopPlaying();
   }
 });
+
+let selectedMode = "pomodoro";
+let customMinutes = 15;
+let breathingInterval = null;
+const modeInputs = document.querySelectorAll("input[name='mode']");
+const customTimeInput = document.getElementById("custom-time-input");
+const breathingOverlay = document.getElementById("breathing-overlay");
+
+modeInputs.forEach((input) => {
+  input.addEventListener("change", () => {
+    selectedMode = input.value;
+    if (selectedMode === "custom") {
+      customTimeInput.style.display = "inline";
+    } else {
+      customTimeInput.style.display = "none";
+    }
+  });
+});
+
+customTimeInput.addEventListener("input", (e) => {
+  customMinutes = parseInt(e.target.value) || 15;
+});
+
+function iniciarPomodoroComSom(soundscapeId) {
+  let foco = true;
+  let ciclos = 0;
+  const focoMin = 0.5;
+  const pausaMin = 1;
+  stopAll();
+  clearInterval(breathingInterval);
+
+  function iniciarCiclo() {
+    if (foco) {
+      window.mindscape.playAudio(soundscapeId);
+      console.log(`Pomodoro: Foco (${focoMin} min)`);
+      setTimeout(() => {
+        stopAll();
+        foco = false;
+        ciclos++;
+        iniciarCiclo();
+      }, focoMin * 60 * 1000);
+    } else {
+      console.log(`Pomodoro: Pausa (${pausaMin} min)`);
+      setTimeout(() => {
+        foco = true;
+        iniciarCiclo();
+      }, pausaMin * 60 * 1000);
+    }
+  }
+
+  iniciarCiclo();
+}
+
+function iniciarSomPorTempo(soundscapeId, minutos) {
+  stopAll();
+  clearInterval(breathingInterval);
+  window.mindscape.playAudio(soundscapeId);
+  setTimeout(() => {
+    window.mindscape.handleStopPlaying();
+  }, minutos * 60 * 1000);
+}
+
+function iniciarRespiracaoGuiada(soundscapeId) {
+  stopAll();
+  window.mindscape.playAudio(soundscapeId);
+  let etapa = 0;
+  const etapas = [
+    { cor: "rgba(173,216,230,0.4)", texto: "Inspire", tempo: 5000 },
+    { cor: "rgba(255,255,0,0.3)", texto: "Prenda", tempo: 5000 },
+    { cor: "rgba(255,182,193,0.4)", texto: "Expire", tempo: 5000 }
+  ];
+
+  function ciclo() {
+    const atual = etapas[etapa % etapas.length];
+    breathingOverlay.style.backgroundColor = atual.cor;
+    etapa++;
+    breathingInterval = setTimeout(ciclo, atual.tempo);
+  }
+
+  ciclo();
+}
+
+// Atualize handleSoundscapeClick
+MindScape.prototype.handleSoundscapeClick = async function (id, buttonElement) {
+  document.querySelectorAll(".soundscape-button").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  buttonElement.classList.add("active");
+
+  this.activeSoundscape = id;
+  this.isPlaying = true;
+  this.updatePlayingState();
+
+  if (selectedMode === "pomodoro") {
+    iniciarPomodoroComSom(id);
+  } else if (selectedMode === "custom") {
+    iniciarSomPorTempo(id, customMinutes);
+  } else if (selectedMode === "breathing") {
+    iniciarRespiracaoGuiada(id);
+  }
+};
