@@ -5,23 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindScape</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
 </head>
 <body>
     <div id="app" class="app-container">
         <!-- Header -->
         <div id="header" class="header">
             <h1 class="title">MindScape</h1>
-            <div class="mode-selector">
-                <label>
-                    <input type="radio" name="mode" value="breathing" /> Respiração Guiada
+             <div class="mode-selector">
+                <input id="breathing-mode" type="radio" name="mode" value="breathing" />
+                <label for="breathing-mode" class="mode-option">
+                    <i data-feather="wind" class="mode-icon"></i>
+                    <span class="option-content">Respiração Guiada</span>
                 </label>
-                <label>
-                    <input type="radio" name="mode" value="pomodoro" checked /> Pomodoro
+                <input id="pomodoro-mode" type="radio" name="mode" value="pomodoro" checked />
+                <label for="pomodoro-mode" class="mode-option">
+                    <i data-feather="clock" class="mode-icon"></i>
+                <span class="option-content">Pomodoro</span>
                 </label>
-                <label>
-                    <input type="radio" name="mode" value="custom" /> Tempo personalizado
+                <input id="custom-mode" type="radio" name="mode" value="custom" />
+                <label for="custom-mode" class="mode-option">
+                 <i data-feather="sliders" class="mode-icon"></i>
+                    <span class="option-content">Tempo Personalizado</span>
                 </label>
-                <input id="custom-time-input" type="number" min="1" max="180" value="15" style="display:none;" /> minutos
+                <input id="custom-time-input" type="number" min="1" max="180" class="custom-input" placeholder="Minutos" />
             </div>
         </div>
 
@@ -125,6 +133,9 @@
 
     <script src="https://unpkg.com/resonance-audio/build/resonance-audio.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>
 

@@ -170,6 +170,172 @@ body {
   display: flex;
 }
 
+.mode-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Respiração */
+#breathing-mode {
+  display: none;
+}
+
+label[for="breathing-mode"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  background: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 10px rgba(71, 85, 105, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+label[for="breathing-mode"] .mode-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #475569;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+label[for="breathing-mode"]:hover {
+  background: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.4);
+}
+
+label[for="breathing-mode"]:hover .mode-icon {
+  color: #475569;
+  transform: scale(1.1);
+}
+
+#breathing-mode:checked + label[for="breathing-mode"] {
+  background: linear-gradient(135deg, #94a3b8, #475569);
+  box-shadow: 0 8px 20px rgba(71, 85, 105, 0.6);
+  transform: translateY(-3px);
+}
+
+#breathing-mode:checked + label[for="breathing-mode"] .mode-icon {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+/* Pomodoro */
+#pomodoro-mode {
+  display: none;
+}
+
+label[for="pomodoro-mode"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  background: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 10px rgba(71, 85, 105, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+label[for="pomodoro-mode"] .mode-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #475569;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+label[for="pomodoro-mode"]:hover {
+  background: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.4);
+}
+
+label[for="pomodoro-mode"]:hover .mode-icon {
+  color: #475569;
+  transform: scale(1.1);
+}
+
+#pomodoro-mode:checked + label[for="pomodoro-mode"] {
+  background: linear-gradient(135deg, #94a3b8, #475569);
+  box-shadow: 0 8px 20px rgba(71, 85, 105, 0.6);
+  transform: translateY(-3px);
+}
+
+#pomodoro-mode:checked + label[for="pomodoro-mode"] .mode-icon {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+/* Custom */
+#custom-mode {
+  display: none;
+}
+
+label[for="custom-mode"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  background: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 10px rgba(71, 85, 105, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+label[for="custom-mode"] .mode-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #475569;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+label[for="custom-mode"]:hover {
+  background: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.4);
+}
+
+label[for="custom-mode"]:hover .mode-icon {
+  color: #0bb1e5;
+  transform: scale(1.1);
+}
+
+#custom-mode:checked + label[for="custom-mode"] {
+  background: linear-gradient(135deg, #94a3b8, #475569);
+  box-shadow: 0 8px 20px rgba(71, 85, 105, 0.6);
+  transform: translateY(-3px);
+}
+
+#custom-mode:checked + label[for="custom-mode"] .mode-icon {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
+.custom-time-input {
+  width: 5rem;
+  padding: 0.5rem 0.75rem;
+  margin-left: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  color: #334155;
+  background: #ffffff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-time-input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+}
+
 /* Border Overlay */
 .border-overlay {
   position: absolute;

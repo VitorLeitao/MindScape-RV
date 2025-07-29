@@ -8,7 +8,7 @@ const sources = [];
 function getPosition(index) {
   const positions = [
     [5, 0, 2],
-    [-5, 0, -2]
+    [-5, 0, -2],
   ];
   return positions[index] || [0, 0, 0];
 }
@@ -31,8 +31,10 @@ async function loadSound(url, position) {
 }
 
 function stopAll() {
-  sources.forEach(source => {
-    try { source.stop(); } catch (e) {}
+  sources.forEach((source) => {
+    try {
+      source.stop();
+    } catch (e) {}
   });
   sources.length = 0;
 }
@@ -199,7 +201,7 @@ function iniciarRespiracaoGuiada(soundscapeId) {
   const etapas = [
     { cor: "rgba(173,216,230,0.4)", texto: "Inspire", tempo: 5000 },
     { cor: "rgba(255,255,0,0.3)", texto: "Prenda", tempo: 5000 },
-    { cor: "rgba(255,182,193,0.4)", texto: "Expire", tempo: 5000 }
+    { cor: "rgba(255,182,193,0.4)", texto: "Expire", tempo: 5000 },
   ];
 
   function ciclo() {
