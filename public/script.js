@@ -87,6 +87,8 @@ class MindScape {
 
     this.updatePlayingState();
     stopAll();
+    clearTimeout(pomodoroTimeout);
+    clearInterval(breathingInterval);
     console.log("Parado.");
   }
 
@@ -135,6 +137,7 @@ document.addEventListener("keydown", (e) => {
 
 let selectedMode = "pomodoro";
 let customMinutes = 15;
+let pomodoroTimeout = null; 
 let breathingInterval = null;
 const modeInputs = document.querySelectorAll("input[name='mode']");
 const customTimeInput = document.getElementById("custom-time-input");
@@ -158,16 +161,17 @@ customTimeInput.addEventListener("input", (e) => {
 function iniciarPomodoroComSom(soundscapeId) {
   let foco = true;
   let ciclos = 0;
-  const focoMin = 0.5;
-  const pausaMin = 1;
+  const focoMin = 15;
+  const pausaMin = 5;
   stopAll();
   clearInterval(breathingInterval);
+  clearTimeout(pomodoroTimeout);
 
   function iniciarCiclo() {
     if (foco) {
       window.mindscape.playAudio(soundscapeId);
       console.log(`Pomodoro: Foco (${focoMin} min)`);
-      setTimeout(() => {
+      pomodoroTimeout = setTimeout(() => {
         stopAll();
         foco = false;
         ciclos++;
@@ -175,7 +179,7 @@ function iniciarPomodoroComSom(soundscapeId) {
       }, focoMin * 60 * 1000);
     } else {
       console.log(`Pomodoro: Pausa (${pausaMin} min)`);
-      setTimeout(() => {
+      pomodoroTimeout = setTimeout(() => {
         foco = true;
         iniciarCiclo();
       }, pausaMin * 60 * 1000);
