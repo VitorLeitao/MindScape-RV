@@ -17,6 +17,8 @@ app.get('/getSoundscape/:id', (req, res) => {
   florestaAmanhecer: ['/sounds/vento.mp3', '/sounds/incetos_floresta.mp3'], 
   ambienteTerapeutico: ['/sounds/musica_calma_2.mp3', '/sounds/passaro.mp3'], // Diminuit musica
   refugioNoturno: ['/sounds/chuva_janela.mp3', '/sounds/incetos_floresta.mp3'],// Diminuit musica
+  relaxamentoVento2D: ['/sounds/vento.mp3'],
+  relaxamentoPraia2D: ['/sounds/chuva.mp3']
 };
 
   if (soundscapes[id]) {

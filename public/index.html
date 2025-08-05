@@ -12,12 +12,24 @@
     <div id="app" class="app-container">
         <!-- Header -->
         <div id="header" class="header">
-            <h1 class="title">MindScape</h1>
+            <h1 class="title">
+            MindScape
+            <div class="tooltip-container">
+                <i data-feather="info" class="info-icon"></i>
+                <span class="tooltip-text">Respiração Guiada: Azul - Inspirar / Amarelo - Segurar / Vermelho - Soltar
+                </span>
+            </div>
+            </h1>
              <div class="mode-selector">
                 <input id="breathing-mode" type="radio" name="mode" value="breathing" />
                 <label for="breathing-mode" class="mode-option">
                     <i data-feather="wind" class="mode-icon"></i>
                     <span class="option-content">Respiração Guiada</span>
+                </label>
+                <input id="relaxing-mode" type="radio" name="mode" value="relaxing" />
+                <label for="relaxing-mode" class="mode-option">
+                    <i data-feather="wind" class="mode-icon"></i>
+                    <span class="option-content">Relaxamento</span>
                 </label>
                 <input id="pomodoro-mode" type="radio" name="mode" value="pomodoro" checked />
                 <label for="pomodoro-mode" class="mode-option">
@@ -110,6 +122,31 @@
                 <div class="active-indicator"></div>
                 <div class="border-overlay"></div>
             </button>
+            
+            <!-- PRAIA - 2D -->
+            <button class="soundscape-button" data-id="relaxamentoPraia2D" data-name="Relaxamento Praia">
+                <div class="gradient-bg gradient-slate"></div>
+                <div class="icon-container">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M5 16h14a4 4 0 0 0-1.3-7.8A6 6 0 0 0 5 11a4 4 0 0 0 0 5z" />
+                    </svg>
+                </div>
+                <div class="active-indicator"></div>
+                <div class="border-overlay"></div>
+            </button>
+
+                <!-- Cabana na Montanha - 2D -->
+            <button class="soundscape-button" data-id="relaxamentoVento2D" data-name="Cabana na Montanha">
+                    <div class="gradient-bg gradient-green"></div>
+                    <div class="icon-container">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
+                        </svg>
+                    </div>
+                    <div class="active-indicator"></div>
+                    <div class="border-overlay"></div>
+            </button>
+
             </div>
 
             </div>

@@ -116,8 +116,12 @@ class MindScape {
     try {
       const response = await fetch(`/getSoundscape/${id}`);
       const files = await response.json(); // ex: ['chuva.mp3', 'vento.mp3']
-      for (let i = 0; i < files.length; i++) {
-        await loadSound(files[i], getPosition(i));
+      if (files.length == 1){
+        await loadSound(files[0], [0,0,0]);
+      }else{
+        for (let i = 0; i < files.length; i++) {
+          await loadSound(files[i], getPosition(i));
+        }
       }
     } catch (e) {
       console.error("Erro ao carregar som:", e);
@@ -198,6 +202,12 @@ function iniciarSomPorTempo(soundscapeId, minutos) {
   }, minutos * 60 * 1000);
 }
 
+function iniciarSomRelaxamento(soundscapeId) {
+  stopAll();
+  clearInterval(breathingInterval);
+  window.mindscape.playAudio(soundscapeId);
+}
+
 function iniciarRespiracaoGuiada(soundscapeId) {
   stopAll();
   window.mindscape.playAudio(soundscapeId);
@@ -235,5 +245,7 @@ MindScape.prototype.handleSoundscapeClick = async function (id, buttonElement) {
     iniciarSomPorTempo(id, customMinutes);
   } else if (selectedMode === "breathing") {
     iniciarRespiracaoGuiada(id);
+  } else if (selectedMode === "relaxing") {
+    iniciarSomRelaxamento(id);
   }
 };

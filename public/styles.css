@@ -225,6 +225,52 @@ label[for="breathing-mode"]:hover .mode-icon {
   transform: scale(1.2);
 }
 
+/* Relaxamento */
+#relaxing-mode {
+  display: none;
+}
+
+label[for="relaxing-mode"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  background: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 4px 10px rgba(71, 85, 105, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+label[for="relaxing-mode"] .mode-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #475569;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+label[for="relaxing-mode"]:hover {
+  background: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(14, 165, 233, 0.4);
+}
+
+label[for="relaxing-mode"]:hover .mode-icon {
+  color: #475569;
+  transform: scale(1.1);
+}
+
+#relaxing-mode:checked + label[for="relaxing-mode"] {
+  background: linear-gradient(135deg, #94a3b8, #475569);
+  box-shadow: 0 8px 20px rgba(71, 85, 105, 0.6);
+  transform: translateY(-3px);
+}
+
+#relaxing-mode:checked + label[for="relaxing-mode"] .mode-icon {
+  color: #ffffff;
+  transform: scale(1.2);
+}
+
 /* Pomodoro */
 #pomodoro-mode {
   display: none;
@@ -414,4 +460,48 @@ label[for="custom-mode"]:hover .mode-icon {
     width: 2.5rem;
     height: 2.5rem;
   }
+}
+
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 999;
+  bottom: 125%; /* acima do ícone */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.tooltip-container .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%; /* setinha para baixo */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.info-icon {
+  cursor: pointer;
 }
